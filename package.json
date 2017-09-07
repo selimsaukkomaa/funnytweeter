@@ -1,8 +1,8 @@
 {
-  "name": "hauskaoskari",
+  "name": "funnytweeter",
   "version": "1.0.0",
-  "description": "Twitter bot ",
-  "main": "bot.js",
+  "description": "A very dumb Twitter bot",
+  "main": "funnytweet.js",
   "dependencies": {
     "twit": "^2.2.9"
   },

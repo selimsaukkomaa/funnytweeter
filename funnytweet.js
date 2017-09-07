@@ -6,11 +6,11 @@ var config = require('./config');
 
 var T = new Twit(config);
 
-
+// Specifying the username and the count of tweets requested from the API.
 
 var params = {
-  screen_name: 'username',
-  count: 10,
+  screen_name: INSERT_USERNAME_HERE,
+  count: INSERT_COUNT_HERE,
 }
 
 T.get('statuses/user_timeline', params, randomTweet);
