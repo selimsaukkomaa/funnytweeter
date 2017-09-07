@@ -1,4 +1,4 @@
-console.log("The bot is starting");
+console.log("😂😂😂");
 
 var Twit = require('twit');
 
@@ -9,7 +9,7 @@ var T = new Twit(config);
 
 
 var params = {
-  screen_name: 'oskarionninen',
+  screen_name: 'username',
   count: 10,
 }
 

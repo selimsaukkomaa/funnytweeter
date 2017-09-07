@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/selimsaukkomaa/hauskaoskari.git"
+    "url": "git+https://github.com/selimsaukkomaa/funnytweeter"
   },
   "author": "Selim Saukkomaa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/selimsaukkomaa/hauskaoskari/issues"
+    "url": "https://github.com/selimsaukkomaa/funnytweeter/issues"
   },
-  "homepage": "https://github.com/selimsaukkomaa/hauskaoskari#readme"
+  "homepage": "https://github.com/selimsaukkomaa/funnytweeter#readme"
 }
