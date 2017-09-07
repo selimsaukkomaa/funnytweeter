@@ -24,7 +24,7 @@ function randomTweet(err, data, response) {
 
 // Code for creating a test tweet.
 
-  var testtweet = { status: "Testing " + "😂" }
+  var testtweet = { status: "Testing " + " 😂 😂 😂 " }
 
 // Code for posting to Twitter. Replace testtweet with funnytweet and the program will use a randomized tweet from the desired user's timeline.
 

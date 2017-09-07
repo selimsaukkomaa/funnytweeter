@@ -4,6 +4,6 @@ Funnytweeter is a bot that adds the :joy: emoji at the end of every tweet by a s
 
 This thing has **no purpose whatsoever** other than to be funny.
 
-Note: A file called config.js is referenced in bot.js. **This file contains the Twitter api keys** and as such is obviously included in the .gitignore file.
+Note: A file called config.js is referenced in funnytweet.js. **This file contains the Twitter api keys** and as such is obviously included in the .gitignore file.
 
-This bot was built partly with the fantastic youtube tutorial by Daniel Shiffman, found at https://youtu.be/RF5_MPSNAtU.
+Special thanks to Daniel Shiffman and his very informative video series on the Twit package and Twitter API: https://youtu.be/RF5_MPSNAtU.
