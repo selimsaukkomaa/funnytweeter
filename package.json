@@ -1,0 +1,23 @@
+{
+  "name": "hauskaoskari",
+  "version": "1.0.0",
+  "description": "Twitter bot ",
+  "main": "bot.js",
+  "dependencies": {
+    "twit": "^2.2.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selimsaukkomaa/hauskaoskari.git"
+  },
+  "author": "Selim Saukkomaa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/selimsaukkomaa/hauskaoskari/issues"
+  },
+  "homepage": "https://github.com/selimsaukkomaa/hauskaoskari#readme"
+}
