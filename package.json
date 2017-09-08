@@ -2,7 +2,7 @@
   "name": "funnytweeter",
   "version": "1.0.0",
   "description": "A very dumb Twitter bot",
-  "main": "funnytweet.js",
+  "main": "app.js",
   "dependencies": {
     "twit": "^2.2.9"
   },

@@ -20,7 +20,7 @@ T.get('statuses/user_timeline', params, randomTweet);
 function randomTweet(err, data, response) {
 
   var tweets = data;
-  var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + " 😂"
+  var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + " 😂 😂 😂 "
 
 // Code for creating a test tweet.
 
