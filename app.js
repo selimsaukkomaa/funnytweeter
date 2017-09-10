@@ -15,12 +15,28 @@ var params = {
 
 T.get('statuses/user_timeline', params, randomTweet);
 
-// Creating the random tweet from the group of tweets requested from the API.
+// randomTweet is a function that does the initial randomization from the batch of tweets retrieved from the Twitter API.
 
 function randomTweet(err, data, response) {
 
   var tweets = data;
-  var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + " 😂 😂 😂 "
+  var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + "  😂 😂 😂 ";
+  validateTweet(funnytweet, tweets);
+
+}
+
+// validateTweet then takes what randomTweet has produced and runs it through a validation, checking if there are @ signs in the Tweet (since we don't want our bot pinging innocent bystanders all the time!). It then runs itself as many times needed to find a tweet that contains no @ signs and adds the emoji to that tweet.
+
+function validateTweet(funnytweet, tweets) {
+  if (funnytweet.includes("@")) {
+    var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + "  😂 😂 😂 ";
+     console.log("tweet was discarded");
+     validateTweet(funnytweet, tweets);
+    } else {
+     console.log("found tweet: " + funnytweet);
+    }
+
+}
 
 // Code for creating a test tweet.
 
