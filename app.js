@@ -11,6 +11,7 @@ var T = new Twit(config);
 var params = {
   screen_name: INSERT_USERNAME_HERE,
   count: INSERT_COUNT_HERE,
+  exclude_replies: true
 }
 
 T.get('statuses/user_timeline', params, randomTweet);
@@ -33,7 +34,7 @@ function validateTweet(funnytweet, tweets) {
      console.log("tweet was discarded");
      validateTweet(funnytweet, tweets);
     } else {
-     console.log("found tweet: " + funnytweet);
+     console.log("found a tweet: " + funnytweet);
     }
 
 }
