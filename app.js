@@ -1,4 +1,4 @@
-console.log("😂😂😂");
+console.log("Funnytweeter is starting...");
 
 var Twit = require('twit');
 
@@ -14,9 +14,12 @@ var params = {
   exclude_replies: true
 }
 
-T.get('statuses/user_timeline', params, randomTweet);
 
 // randomTweet is a function that does the initial randomization from the batch of tweets retrieved from the Twitter API.
+
+
+T.get('statuses/user_timeline', params, randomTweet);
+
 
 function randomTweet(err, data, response) {
 
@@ -26,27 +29,25 @@ function randomTweet(err, data, response) {
 
 }
 
-// validateTweet then takes what randomTweet has produced and runs it through a validation, checking if there are @ signs in the Tweet (since we don't want our bot pinging innocent bystanders all the time!). It then runs itself as many times needed to find a tweet that contains no @ signs and adds the emoji to that tweet.
+// validateTweet then takes what randomTweet has produced and runs it through a validation, checking if there are @ signs in the Tweet (since we don't want our bot pinging innocent bystanders all the time!). It then runs itself as many times needed to find a tweet that contains no @ signs and adds the emoji to that tweet. After it finds a tweet that does not contain @-symbols, it notifies the user of the tweet and posts it to Twitter using function T.post.
+
 
 function validateTweet(funnytweet, tweets) {
   if (funnytweet.includes("@")) {
     var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + "  😂 😂 😂 ";
      console.log("tweet was discarded");
      validateTweet(funnytweet, tweets);
-    } else {
+    }
+    else {
      console.log("found a tweet: " + funnytweet);
+    T.post('statuses/update', { status: funnytweet } , callBack);
+
     }
 
 }
 
-// Code for creating a test tweet.
+// callBack is a function that is called by T.post when a suitable Twitter is found. callBack is used to verify from the Twitter APi that Tweet was actually sent and it will do so into the console.
 
-  var testtweet = { status: "Testing " + " 😂 😂 😂 " }
-
-// Code for posting to Twitter. Replace testtweet with funnytweet and the program will use a randomized tweet from the desired user's timeline.
-
-  T.post('statuses/update', testtweet, function(err, data, response) {
-    console.log(data)
-  })
-
-}
+  function callBack(err, data, response) {
+    console.log("Posted to Twitter: " + data.text)
+  }
