@@ -24,7 +24,7 @@ T.get('statuses/user_timeline', params, randomTweet);
 function randomTweet(err, data, response) {
 
   var tweets = data;
-  var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + "  😂 😂 😂 ";
+  var funnytweet = tweets[Math.floor(Math.random() * tweets.length)].text + "  😂 😂 😂 ";
   validateTweet(funnytweet, tweets);
 
 }
@@ -34,20 +34,21 @@ function randomTweet(err, data, response) {
 
 function validateTweet(funnytweet, tweets) {
   if (funnytweet.includes("@")) {
-    var funnytweet = tweets[Math.floor(Math.random()*tweets.length)].text + "  😂 😂 😂 ";
-     console.log("tweet was discarded");
-     validateTweet(funnytweet, tweets);
-    }
-    else {
-     console.log("found a tweet: " + funnytweet);
-    T.post('statuses/update', { status: funnytweet } , callBack);
+    var funnytweet = tweets[Math.floor(Math.random() * tweets.length)].text + "  😂 😂 😂 ";
+    console.log("a tweet was discarded");
+    validateTweet(funnytweet, tweets);
+  } else {
+    console.log("found a tweet!");
+    T.post('statuses/update', {
+      status: funnytweet
+    }, callBack);
 
-    }
+  }
 
 }
 
 // callBack is a function that is called by T.post when a suitable Twitter is found. callBack is used to verify from the Twitter APi that Tweet was actually sent and it will do so into the console.
 
-  function callBack(err, data, response) {
-    console.log("Posted to Twitter: " + data.text)
-  }
+function callBack(err, data, response) {
+  console.log("Posted to Twitter: " + data.text)
+}
