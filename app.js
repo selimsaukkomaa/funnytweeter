@@ -14,41 +14,47 @@ var params = {
   exclude_replies: true
 }
 
+// generateTweet is a function that is essentially the entire app, and it exists for setInterval to control something. setInterval is set to tweet every two hours, but you can of course change this to whatever you wish.
+generateTweet();
+setInterval(generateTweet, 1000 * 60 * 60 * 2);
 
-// randomTweet is a function that does the initial randomization from the batch of tweets retrieved from the Twitter API.
-
-
-T.get('statuses/user_timeline', params, randomTweet);
-
-
-function randomTweet(err, data, response) {
-
-  var tweets = data;
-  var funnytweet = tweets[Math.floor(Math.random() * tweets.length)].text + "  😂 😂 😂 ";
-  validateTweet(funnytweet, tweets);
-
-}
-
-// validateTweet then takes what randomTweet has produced and runs it through a validation, checking if there are @ signs in the Tweet (since we don't want our bot pinging innocent bystanders all the time!). It then runs itself as many times needed to find a tweet that contains no @ signs and adds the emoji to that tweet. After it finds a tweet that does not contain @-symbols, it notifies the user of the tweet and posts it to Twitter using function T.post.
+function generateTweet() {
+  // randomTweet is a function that does the initial randomization from the batch of tweets retrieved from the Twitter API.
 
 
-function validateTweet(funnytweet, tweets) {
-  if (funnytweet.includes("@")) {
+  T.get('statuses/user_timeline', params, randomTweet);
+
+
+  function randomTweet(err, data, response) {
+
+    var tweets = data;
     var funnytweet = tweets[Math.floor(Math.random() * tweets.length)].text + "  😂 😂 😂 ";
-    console.log("a tweet was discarded");
     validateTweet(funnytweet, tweets);
-  } else {
-    console.log("found a tweet!");
-    T.post('statuses/update', {
-      status: funnytweet
-    }, callBack);
 
   }
 
-}
+  // validateTweet then takes what randomTweet has produced and runs it through a validation, checking if there are @ signs in the Tweet (since we don't want our bot pinging innocent bystanders all the time!). It then runs itself as many times needed to find a tweet that contains no @ signs and adds the emoji to that tweet. After it finds a tweet that does not contain @-symbols, it notifies the user of the tweet and posts it to Twitter using function T.post.
 
-// callBack is a function that is called by T.post when a suitable Twitter is found. callBack is used to verify from the Twitter APi that Tweet was actually sent and it will do so into the console.
 
-function callBack(err, data, response) {
-  console.log("Posted to Twitter: " + data.text)
+  function validateTweet(funnytweet, tweets) {
+    if (funnytweet.includes("@")) {
+      var funnytweet = tweets[Math.floor(Math.random() * tweets.length)].text + "  😂 😂 😂 ";
+      console.log("a tweet was discarded");
+      validateTweet(funnytweet, tweets);
+    } else {
+      console.log("found a tweet!");
+      T.post('statuses/update', {
+        status: funnytweet
+      }, callBack);
+
+    }
+
+  }
+
+  // callBack is a function that is called by T.post when a suitable Twitter is found. callBack is used to verify from the Twitter APi that Tweet was actually sent and it will do so into the console.
+
+  function callBack(err, data, response) {
+    console.log("Posted to Twitter: " + data.text)
+  }
+
 }
